@@ -1,4 +1,5 @@
 # -VUT-ISA2
+Network Applications and Administration -  Generation of NetFlow data from captured network traffic
 
 V rámci projektu implementujte NetFlow exportér, který ze zachycených síťových dat ve formátu pcap vytvoří záznamy NetFlow, které odešle na kolektor.
 
