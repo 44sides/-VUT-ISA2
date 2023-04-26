@@ -1,0 +1,29 @@
+.TH Exporter NetFlow 1
+.SH NAME
+Netflow Exporter \- Generation of NetFlow data from captured network traffic
+.SH SYNOPSIS
+.B flow [-f <file>] [-c <netflow_collector>[:<port>]] [-a <active_timer>] [-i <inactive_timer>] [-m <count>]
+.SH DESCRIPTION
+.B Netflow Exporter
+processes the captured traffic in pcap format, creates netflow packets and
+sends them to the collector.
+.SH OPTIONS
+.TP
+.BR \-f =\fIBITS\fR
+file name or STDIN for analysis.
+.TP
+.BR \-c =\fIBITS\fR
+IP address or hostname of the NetFlow collector. Optionally also UDP port
+(127.0.0.1:2055, if not specified)
+.TP
+.BR \-a =\fIBITS\fR
+the interval in seconds after which active records are exported to the collector (60 if
+not specified)
+.TP
+.BR \-i =\fIBITS\fR
+the interval in seconds after which inactive records are exported to the collector (10 if
+not specified)
+.TP
+.BR \-m =\fIBITS\fR
+flow-cache size. When the maximum size is reached, the oldest record in the cache is
+exported to the collector (1024, if not specified).
