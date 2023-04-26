@@ -1,23 +1,23 @@
 # -VUT-ISA2
 Network Applications and Administration -  Generation of NetFlow data from captured network traffic
 
-V rámci projektu implementujte NetFlow exportér, který ze zachycených síťových dat ve formátu pcap vytvoří záznamy NetFlow, které odešle na kolektor.
+Implement a NetFlow exporter that creates NetFlow records from the captured network data in pcap format and sends to the collector.
 
-### Použití:
-Program musí podporovat následující syntax pro spuštění:
+### Use:
+The program must support the following syntax to run:
 - ./flow [-f <file>] [-c <netflow_collector>[:<port>]] [-a <active_timer>] [-i <inactive_timer>] [-m <count>]
 
-kde
-- -f <file> jméno analyzovaného souboru nebo STDIN,
-- -c <neflow_collector:port> IP adresa, nebo hostname NetFlow kolektoru. volitelně i UDP port (127.0.0.1:2055, pokud není specifikováno),
-- -a <active_timer> - interval v sekundách, po kterém se exportují aktivní záznamy na kolektor (60, pokud není specifikováno),
-- -i <seconds> - interval v sekundách, po jehož vypršení se exportují neaktivní záznamy na kolektor (10, pokud není specifikováno),
-- -m <count> - velikost flow-cache. Při dosažení max. velikosti dojde k exportu nejstaršího záznamu v cachi na kolektor (1024, pokud není specifikováno).
+where
+- -f <file> network traffic file name or STDIN,
+- -c <neflow_collector:port> IP address or hostname of the NetFlow collector. optionally also UDP port (127.0.0.1:2055, if not specified),
+- -a <active_timer> - interval in seconds after which active records are exported to the collector (60 if not specified),
+- -i <seconds> - interval in seconds after which inactive records are exported to the collector (10 if not specified),
+- -m <count> - flow-cache size. When the max size is reached, the oldest entry in the cache is exported to the collector (1024, if not specified).
 
-Všechny parametry jsou brány jako volitelné. Pokud některý z parametrů není uveden, použije se místo něj výchozí hodnota.
+All parameters are taken as optional. If any of the parameters is not specified, the default value is used instead.
 
-### Příklad použití:
+### Example of use:
 - ./flow -f input.pcap -c 192.168.0.1:2055
 
-### Implementace:
-- Implementujte v jazyku C/C++, za pomoci knihovny libpcap.
+### Implementation:
+- Implement in C/C++, using the libpcap library.
